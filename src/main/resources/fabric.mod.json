@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "beehooks",
+  "id": "beecompatible",
   "version": "${version}",
 
-  "name": "Bee Hooks",
-  "icon": "assets/beehooks/icon.png",
+  "name": "Bee Compatible",
+  "icon": "assets/beecompatible/icon.png",
   "description": "Events to prevent collision between mods that modify beehives",
   "license": "MIT",
   "contact": {
-    "sources": "https://github.com/CottonMC/BeeHooks"
+    "sources": "https://github.com/CottonMC/BeeCompatible"
   },
   "environment": "*",
   "mixins": [
-    "mixins.beehooks.json",
-    "mixins.beehooks_beebetter.json"
+    "mixins.beecompatible.json",
+    "mixins.beecompatible_beebetter.json"
   ],
   "depends": {
     "fabricloader": ">=0.4.0"

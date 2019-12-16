@@ -1,7 +1,7 @@
-package io.github.cottonmc.beehooks.mixin;
+package io.github.cottonmc.beecompatible.mixin;
 
-import io.github.cottonmc.beehooks.api.BeeTimeCheckCallback;
-import io.github.cottonmc.beehooks.api.BeeWeatherCheckCallback;
+import io.github.cottonmc.beecompatible.api.BeeTimeCheckCallback;
+import io.github.cottonmc.beecompatible.api.BeeWeatherCheckCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BeeHiveBlockEntity;
 import net.minecraft.entity.Entity;

@@ -1,11 +1,10 @@
-package io.github.cottonmc.beehooks.mixin.compat.beebetter;
+package io.github.cottonmc.beecompatible.mixin.compat.beebetter;
 
 import com.github.draylar.beebetter.entity.ModdedBeehiveBlockEntity;
 import com.github.draylar.beebetter.util.BeeState;
-import io.github.cottonmc.beehooks.api.BeeTimeCheckCallback;
-import io.github.cottonmc.beehooks.api.BeeWeatherCheckCallback;
+import io.github.cottonmc.beecompatible.api.BeeTimeCheckCallback;
+import io.github.cottonmc.beecompatible.api.BeeWeatherCheckCallback;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeeHiveBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.BeeEntity;

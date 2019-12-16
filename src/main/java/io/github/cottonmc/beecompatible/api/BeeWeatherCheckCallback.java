@@ -1,4 +1,4 @@
-package io.github.cottonmc.beehooks.api;
+package io.github.cottonmc.beecompatible.api;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;

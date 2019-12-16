@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "io.github.cottonmc.beehooks.mixin.compat.beebetter",
-  "plugin": "io.github.cottonmc.beehooks.BeeHooksPlugin",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "MixinModdedBeehiveBlockEntity"
-  ]
-}
