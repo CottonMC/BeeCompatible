@@ -3,7 +3,7 @@ package io.github.cottonmc.beecompatible.mixin;
 import io.github.cottonmc.beecompatible.api.BeeTimeCheckCallback;
 import io.github.cottonmc.beecompatible.api.BeeWeatherCheckCallback;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeeHiveBlockEntity;
+import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.BeeEntity;
@@ -15,11 +15,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.List;
 
-@Mixin(BeeHiveBlockEntity.class)
+@Mixin(BeehiveBlockEntity.class)
 public class MixinBeehiveBlockEntity {
 
 	@Redirect(method = "releaseBee", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isNight()Z"))
-	private boolean timeEvent(World world, BlockState state, CompoundTag tag, List<Entity> entities, BeeHiveBlockEntity.BeeState beeState) {
+	private boolean timeEvent(World world, BlockState state, CompoundTag tag, List<Entity> entities, BeehiveBlockEntity.BeeState beeState) {
 		Entity entity = EntityType.loadEntityWithPassengers(tag, world, e -> e);
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
@@ -30,7 +30,7 @@ public class MixinBeehiveBlockEntity {
 	}
 
 	@Redirect(method = "releaseBee", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isRaining()Z"))
-	private boolean weatherEvent(World world, BlockState state, CompoundTag tag, List<Entity> entities, BeeHiveBlockEntity.BeeState beeState) {
+	private boolean weatherEvent(World world, BlockState state, CompoundTag tag, List<Entity> entities, BeehiveBlockEntity.BeeState beeState) {
 		Entity entity = EntityType.loadEntityWithPassengers(tag, world, e -> e);
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
