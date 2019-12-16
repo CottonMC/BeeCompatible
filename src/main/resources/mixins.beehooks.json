@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "package": "io.github.cottonmc.beehooks.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinBeehiveBlockEntity"
+  ]
+}

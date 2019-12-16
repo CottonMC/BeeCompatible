@@ -1,23 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "starter",
+  "id": "beehooks",
   "version": "${version}",
 
-  "name": "Fabric Starter",
-  "icon": "assets/starter/icon.png",
-  "description": "Template for starting out Fabric mods",
+  "name": "Bee Hooks",
+  "icon": "assets/beehooks/icon.png",
+  "description": "Events to prevent collision between mods that modify beehives",
   "license": "MIT",
   "contact": {
-    "sources": "https://github.com/CottonMC/FabricStarter"
+    "sources": "https://github.com/CottonMC/BeeHooks"
   },
   "environment": "*",
-  "entrypoints": {
-    "main": [
-      "io.github.cottonmc.starter.FabricStarter"
-    ]
-  },
   "mixins": [
-    "mixins.starter.json"
+    "mixins.beehooks.json",
+    "mixins.beehooks_beebetter.json"
   ],
   "depends": {
     "fabricloader": ">=0.4.0"
