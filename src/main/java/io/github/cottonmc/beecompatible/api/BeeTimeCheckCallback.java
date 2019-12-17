@@ -2,24 +2,28 @@ package io.github.cottonmc.beecompatible.api;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
+import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.world.World;
 
 public interface BeeTimeCheckCallback {
 	Event<BeeTimeCheckCallback> EVENT = EventFactory.createArrayBacked(BeeTimeCheckCallback.class,
 			(listeners) -> (world, bee) -> {
+				boolean reject = false;
 				for (BeeTimeCheckCallback event : listeners) {
-					boolean result = event.checkTime(world, bee);
-					if (result) return true;
+					TriState result = event.checkTime(world, bee);
+					if (result.get()) return TriState.TRUE;
+					if (result == TriState.FALSE) reject = true;
 				}
-				return false;
+				return reject? TriState.FALSE : TriState.DEFAULT;
 			});
 
 	/**
 	 * Check whether this bee is allowed to go out with the current time.
 	 * @param world The world to check time on.
 	 * @param bee The bee to check for.
-	 * @return true if the bee may exit the hive at the current time.
+	 * @return whether the bee may exit at the given time. True to forcibly allow, false to forcibly reject, default to let other events or vanilla decide.
+	 * Note: a true return will override any false returns.
 	 */
-	boolean checkTime(World world, BeeEntity bee);
+	TriState checkTime(World world, BeeEntity bee);
 }
