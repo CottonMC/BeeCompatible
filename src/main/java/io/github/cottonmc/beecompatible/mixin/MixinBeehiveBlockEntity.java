@@ -2,6 +2,7 @@ package io.github.cottonmc.beecompatible.mixin;
 
 import io.github.cottonmc.beecompatible.api.BeeTimeCheckCallback;
 import io.github.cottonmc.beecompatible.api.BeeWeatherCheckCallback;
+import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.entity.Entity;
@@ -23,8 +24,8 @@ public class MixinBeehiveBlockEntity {
 		Entity entity = EntityType.loadEntityWithPassengers(tag, world, e -> e);
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
-			boolean result = BeeTimeCheckCallback.EVENT.invoker().checkTime(world, bee);
-			if (result) return false; //a negative here allows bees to exit
+			TriState result = BeeTimeCheckCallback.EVENT.invoker().checkTime(world, bee);
+			if (result != TriState.DEFAULT) return !result.get(); //a negative here allows bees to exit
 		}
 		return world.isNight();
 	}
@@ -34,8 +35,8 @@ public class MixinBeehiveBlockEntity {
 		Entity entity = EntityType.loadEntityWithPassengers(tag, world, e -> e);
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
-			boolean result = BeeWeatherCheckCallback.EVENT.invoker().checkWeather(world, bee);
-			if (result) return false; //a negative here allows bees to exit
+			TriState result = BeeWeatherCheckCallback.EVENT.invoker().checkWeather(world, bee);
+			if (result != TriState.DEFAULT) return !result.get(); //a negative here allows bees to exit
 		}
 		return world.isRaining();
 	}
