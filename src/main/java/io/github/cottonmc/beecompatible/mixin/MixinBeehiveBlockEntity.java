@@ -25,10 +25,9 @@ public class MixinBeehiveBlockEntity {
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
 			TriState result = BeeTimeCheckCallback.EVENT.invoker().checkTime(world, bee);
-			if (result.get()) return false; //a negative here allows bees to exit
-			if (result == TriState.DEFAULT) return world.isNight();
+			if (result != TriState.DEFAULT) return !result.get(); //a negative here allows bees to exit
 		}
-		return true;
+		return world.isNight();
 	}
 
 	@Redirect(method = "releaseBee", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isRaining()Z"))
@@ -37,9 +36,8 @@ public class MixinBeehiveBlockEntity {
 		if (entity instanceof BeeEntity) {
 			BeeEntity bee = (BeeEntity)entity;
 			TriState result = BeeWeatherCheckCallback.EVENT.invoker().checkWeather(world, bee);
-			if (result.get()) return false; //a negative here allows bees to exit
-			if (result == TriState.DEFAULT) return world.isRaining();
+			if (result != TriState.DEFAULT) return !result.get(); //a negative here allows bees to exit
 		}
-		return true;
+		return world.isRaining();
 	}
 }
